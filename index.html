@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeaGlass — AI that fits the shop you actually run</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:        #F3F5F0;
+    --sand-deep:   #E9ECE4;
+    --ink:         #1E2B27;
+    --sea-deep:    #2F4F49;
+    --glass-green: #8FB8A4;
+    --glass-aqua:  #AFD0C9;
+    --glass-amber: #C9A268;
+    --glass-grey:  #B9C4BE;
+    --white:       #FFFFFF;
+    --radius-soft: 6px;
+    --max: 1180px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.08;
+    margin:0;
+    color:var(--sea-deep);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--sea-deep);
+    opacity:0.65;
+    display:block;
+    margin-bottom:14px;
+  }
+  a{ color:inherit; }
+  img,svg{ display:block; max-width:100%; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 32px; }
+  section{ padding:96px 0; }
+  @media (max-width:720px){ section{ padding:64px 0; } .wrap{ padding:0 22px; } }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--sea-deep);
+    outline-offset:3px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(243,245,240,0.86);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(47,79,73,0.1);
+  }
+  nav{
+    max-width:var(--max); margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand-mark{ width:30px; height:30px; }
+  .brand-word{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:1.25rem; color:var(--sea-deep); letter-spacing:0.01em;
+  }
+  .nav-links{ display:flex; gap:30px; list-style:none; margin:0; padding:0; }
+  .nav-links a{
+    text-decoration:none; font-size:0.92rem; font-weight:500; color:var(--ink);
+    padding:6px 0; border-bottom:1px solid transparent;
+  }
+  .nav-links a:hover{ border-bottom-color:var(--glass-amber); }
+  .nav-cta{
+    background:var(--sea-deep); color:var(--white); padding:9px 18px;
+    border-radius:3px; text-decoration:none; font-size:0.88rem; font-weight:600;
+  }
+  .nav-mobile-hide{ display:flex; }
+  @media (max-width:760px){ .nav-mobile-hide{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:88px 0 70px; overflow:hidden; }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero h1{ font-size:clamp(2.3rem, 4.4vw, 3.4rem); }
+  .hero h1 em{ font-style:italic; color:var(--glass-amber); }
+  .hero p.lead{
+    font-size:1.14rem; max-width:46ch; margin:22px 0 32px; color:var(--ink); opacity:0.86;
+  }
+  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 24px; border-radius:3px; text-decoration:none;
+    font-weight:600; font-size:0.95rem; border:1px solid transparent;
+  }
+  .btn-primary{ background:var(--glass-amber); color:var(--ink); }
+  .btn-primary:hover{ background:#bb9257; }
+  .btn-ghost{ border-color:var(--sea-deep); color:var(--sea-deep); }
+  .btn-ghost:hover{ background:rgba(47,79,73,0.06); }
+
+  .trust-strip{
+    margin-top:40px; display:flex; gap:28px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.03em;
+    color:var(--sea-deep); opacity:0.75;
+  }
+  .trust-strip span::before{ content:"— "; }
+
+  /* Hero illustration: scattered tumbled glass cluster */
+  .hero-art{ position:relative; }
+  .hero-art svg{ width:100%; height:auto; }
+  .shard-piece{ filter:drop-shadow(0 8px 18px rgba(47,79,73,0.16)); }
+
+  /* ---------- PAIN POINTS ---------- */
+  .pain{ background:var(--sand-deep); }
+  .pain-head{ max-width:56ch; margin-bottom:52px; }
+  .pain-head h2{ font-size:clamp(1.7rem,3vw,2.3rem); }
+  .pain-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  }
+  @media (max-width:980px){ .pain-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .pain-grid{ grid-template-columns:1fr; } }
+
+  .shard-card{
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.7);
+    padding:30px 24px 26px;
+    clip-path: polygon(0% 4%, 92% 0%, 100% 88%, 8% 100%);
+    box-shadow:0 14px 30px -18px rgba(47,79,73,0.35);
+    transition:transform 0.25s ease;
+  }
+  .shard-card:hover{ transform:translateY(-4px); }
+  .shard-card:nth-child(2){ clip-path: polygon(3% 0%, 100% 6%, 97% 100%, 0% 92%); }
+  .shard-card:nth-child(3){ clip-path: polygon(0% 8%, 96% 0%, 100% 94%, 5% 100%); }
+  .shard-card:nth-child(4){ clip-path: polygon(6% 0%, 100% 4%, 94% 100%, 0% 96%); }
+  .shard-card .icon{ width:34px; height:34px; margin-bottom:18px; color:var(--sea-deep); }
+  .shard-card h3{ font-size:1rem; font-family:'Inter',sans-serif; font-weight:600; color:var(--ink); margin-bottom:8px; }
+  .shard-card p{ font-size:0.92rem; margin:0; opacity:0.78; }
+
+  /* ---------- PROCESS ---------- */
+  .process-head{ max-width:60ch; margin-bottom:20px; }
+  .process-art{ margin:36px 0 56px; }
+  .process-art svg{ width:100%; height:auto; }
+
+  .steps{ counter-reset:step; list-style:none; margin:0; padding:0; }
+  .step{
+    display:grid; grid-template-columns:70px 1fr; gap:24px;
+    padding:28px 0; border-top:1px solid rgba(47,79,73,0.15);
+  }
+  .step:last-child{ border-bottom:1px solid rgba(47,79,73,0.15); }
+  .step-num{
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.7rem; color:var(--glass-amber);
+  }
+  .step h3{ font-size:1.15rem; margin-bottom:6px; color:var(--sea-deep); }
+  .step p{ margin:0; max-width:60ch; opacity:0.8; font-size:0.96rem; }
+
+  /* ---------- TRUST / COMMUNITY ---------- */
+  .community{ background:var(--sea-deep); color:var(--sand); }
+  .community h2{ color:var(--white); font-size:clamp(1.7rem,3vw,2.3rem); max-width:20ch; }
+  .community .eyebrow{ color:var(--glass-aqua); opacity:1; }
+  .comm-grid{ display:grid; grid-template-columns:1fr 1fr; gap:50px; margin-top:44px; }
+  @media (max-width:800px){ .comm-grid{ grid-template-columns:1fr; } }
+  .comm-list{ list-style:none; margin:0; padding:0; display:grid; gap:18px; }
+  .comm-list li{
+    display:flex; gap:14px; align-items:flex-start; font-size:0.98rem; opacity:0.92;
+  }
+  .comm-list li .dot{
+    width:9px; height:9px; border-radius:50%; background:var(--glass-amber);
+    margin-top:8px; flex-shrink:0;
+  }
+  .comm-quote{
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.3rem; line-height:1.45;
+    color:var(--white); border-left:2px solid var(--glass-amber); padding-left:24px;
+  }
+  .comm-quote span{
+    display:block; margin-top:16px; font-family:'IBM Plex Mono',monospace;
+    font-style:normal; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+    opacity:0.65;
+  }
+
+  /* ---------- CASE STUDY ---------- */
+  .case{ }
+  .case-card{
+    background:var(--white);
+    border:1px solid rgba(47,79,73,0.12);
+    border-radius:var(--radius-soft);
+    padding:48px;
+    display:grid; grid-template-columns:1fr 1fr; gap:44px;
+  }
+  @media (max-width:800px){ .case-card{ grid-template-columns:1fr; padding:32px; } }
+  .case-tag{
+    display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.7rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--sea-deep);
+    background:var(--glass-aqua); padding:5px 10px; border-radius:2px; margin-bottom:18px;
+  }
+  .case h3{ font-size:1.5rem; margin-bottom:14px; }
+  .case-stats{ display:flex; gap:34px; margin-top:26px; flex-wrap:wrap; }
+  .case-stats div strong{ display:block; font-family:'Fraunces',serif; font-size:1.7rem; color:var(--glass-amber); }
+  .case-stats div span{ font-size:0.8rem; opacity:0.7; }
+  .case-note{
+    margin-top:26px; padding:14px 16px; background:var(--sand-deep);
+    border-left:3px solid var(--glass-amber); font-size:0.85rem; opacity:0.85; border-radius:2px;
+  }
+
+  /* ---------- GET INVOLVED ---------- */
+  .involve{ background:var(--sand-deep); }
+  .involve-head{ max-width:56ch; margin-bottom:48px; }
+  .involve-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:900px){ .involve-grid{ grid-template-columns:1fr; } }
+  .involve-card{
+    background:var(--white); border-radius:var(--radius-soft);
+    padding:34px 28px; border:1px solid rgba(47,79,73,0.1);
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .involve-card .icon{ width:30px; height:30px; color:var(--glass-amber); }
+  .involve-card h3{ font-size:1.15rem; }
+  .involve-card p{ font-size:0.92rem; opacity:0.78; margin:0; flex-grow:1; }
+  .involve-card .btn{ align-self:flex-start; margin-top:6px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:56px 0 40px; }
+  .foot-grid{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;
+    border-top:1px solid rgba(47,79,73,0.15); padding-top:36px;
+  }
+  .foot-brand{ display:flex; align-items:center; gap:10px; }
+  .foot-brand .brand-mark{ width:24px; height:24px; }
+  footer .fine{ font-family:'IBM Plex Mono',monospace; font-size:0.74rem; opacity:0.6; }
+  .foot-links{ display:flex; gap:22px; list-style:none; margin:0; padding:0; }
+  .foot-links a{ text-decoration:none; font-size:0.85rem; opacity:0.75; }
+  .foot-links a:hover{ opacity:1; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav>
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+        <polygon points="20,3 34,14 29,33 11,33 6,14" fill="#8FB8A4" opacity="0.9"/>
+        <polygon points="20,10 29,17 26,30 14,30 11,17" fill="#AFD0C9" opacity="0.85"/>
+        <polygon points="20,16 25,20 23,27 17,27 15,20" fill="#C9A268"/>
+      </svg>
+      <span class="brand-word">seaglass</span>
+    </a>
+    <ul class="nav-links nav-mobile-hide">
+      <li><a href="#pain">Where it breaks down</a></li>
+      <li><a href="#process">How we work</a></li>
+      <li><a href="#case">A recent project</a></li>
+      <li><a href="#involve">Get involved</a></li>
+    </ul>
+    <a class="nav-cta" href="#involve">Book a coffee</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Design thinking · AI use cases · High Street businesses</span>
+        <h1>AI, sized for the shop you actually run — <em>not</em> a boardroom.</h1>
+        <p class="lead">SeaGlass works with small and medium businesses — cafés, independent shops, consultancies, trades — to find the one or two places AI can genuinely help. No jargon, no six-figure contracts, no software that sits there unused.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#involve">Book a coffee</a>
+          <a class="btn btn-ghost" href="#process">See how it works</a>
+        </div>
+        <div class="trust-strip">
+          <span>Fixed fee, agreed upfront</span>
+          <span>You own everything we build</span>
+          <span>No annual lock-in</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 480 420" fill="none">
+          <defs>
+            <filter id="frost" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="0.6"/>
+            </filter>
+          </defs>
+          <g class="shard-piece" filter="url(#frost)">
+            <polygon points="140,40 230,20 260,110 190,160 110,120" fill="#8FB8A4" opacity="0.88" transform="rotate(-6 180 90)"/>
+          </g>
+          <g class="shard-piece" filter="url(#frost)">
+            <polygon points="260,90 350,70 380,160 320,210 240,170" fill="#AFD0C9" opacity="0.9" transform="rotate(8 310 140)"/>
+          </g>
+          <g class="shard-piece" filter="url(#frost)">
+            <polygon points="70,180 160,160 190,250 120,300 40,250" fill="#C9A268" opacity="0.92" transform="rotate(-4 115 230)"/>
+          </g>
+          <g class="shard-piece" filter="url(#frost)">
+            <polygon points="220,220 320,200 350,300 270,350 190,300" fill="#8FB8A4" opacity="0.8" transform="rotate(5 270 275)"/>
+          </g>
+          <g class="shard-piece" filter="url(#frost)">
+            <polygon points="330,250 410,240 420,320 360,350 310,300" fill="#B9C4BE" opacity="0.75" transform="rotate(-8 365 295)"/>
+          </g>
+          <g class="shard-piece" filter="url(#frost)">
+            <polygon points="60,80 110,70 120,120 80,140 40,110" fill="#AFD0C9" opacity="0.7"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="pain" id="pain">
+    <div class="wrap">
+      <div class="pain-head">
+        <span class="eyebrow">Where local businesses get stuck</span>
+        <h2>Off-the-shelf rarely fits the way you actually work.</h2>
+      </div>
+      <div class="pain-grid">
+        <div class="shard-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h18v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><path d="M5 13v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6"/><path d="M8 21v-5h8v5"/></svg>
+          <h3>Cafés &amp; restaurants</h3>
+          <p>A booking bot that doesn't understand walk-ins, or a review tool nobody has time to check.</p>
+        </div>
+        <div class="shard-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-8h6v8"/></svg>
+          <h3>Independent shops</h3>
+          <p>Three subscriptions bought at once, one of them actually used, all of them still billing monthly.</p>
+        </div>
+        <div class="shard-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H8l-4 4V4Z"/></svg>
+          <h3>Consultancies</h3>
+          <p>Sold the tool before anyone asked what the actual bottleneck was in client delivery.</p>
+        </div>
+        <div class="shard-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+          <h3>Trades &amp; services</h3>
+          <p>Quoting and scheduling still done by hand at 9pm, while the AI subscription sits untouched.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="process-head">
+        <span class="eyebrow">How we work</span>
+        <h2>Design thinking, applied to finding the right use case — not the flashiest one.</h2>
+      </div>
+
+      <div class="process-art" aria-hidden="true">
+        <svg viewBox="0 0 900 160" fill="none">
+          <polygon points="20,60 55,30 90,55 75,100 35,110" fill="#B9C4BE" opacity="0.85"/>
+          <polygon points="90,20 140,10 155,60 110,90 70,70" fill="#9AA6A0" opacity="0.7"/>
+          <polygon points="150,70 190,50 210,100 170,130 130,110" fill="#C7CDC7" opacity="0.8"/>
+          <line x1="260" y1="80" x2="620" y2="80" stroke="#2F4F49" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
+          <polygon points="650,40 700,55 690,105 640,120 610,80" fill="#8FB8A4"/>
+          <polygon points="710,60 760,45 780,90 745,125 700,105" fill="#AFD0C9"/>
+          <polygon points="780,30 830,45 820,90 780,105 755,65" fill="#C9A268"/>
+        </svg>
+      </div>
+
+      <ul class="steps">
+        <li class="step">
+          <span class="step-num">01</span>
+          <div><h3>Listen</h3><p>A half-day on-site, no forms, no slide decks — just a conversation about where time actually gets lost in the day.</p></div>
+        </li>
+        <li class="step">
+          <span class="step-num">02</span>
+          <div><h3>Map</h3><p>We lay out the real workflow together and find the one or two points where AI could genuinely help — and just as importantly, where it can't.</p></div>
+        </li>
+        <li class="step">
+          <span class="step-num">03</span>
+          <div><h3>Pilot</h3><p>A small, cheap, reversible test with your team, on your real work — not a demo, not a slide deck.</p></div>
+        </li>
+        <li class="step">
+          <span class="step-num">04</span>
+          <div><h3>Embed</h3><p>We train the team, write it down simply, and make sure it keeps working once we're not in the room.</p></div>
+        </li>
+        <li class="step">
+          <span class="step-num">05</span>
+          <div><h3>Review</h3><p>We sit down again after 90 days and are honest about what's working, what isn't, and what happens next.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section class="community">
+    <div class="wrap">
+      <span class="eyebrow">Built on community, not contracts</span>
+      <h2>You shouldn't need an IT department to feel safe doing this.</h2>
+      <div class="comm-grid">
+        <ul class="comm-list">
+          <li><span class="dot"></span> Fixed-fee work, agreed before we start — no surprise invoices.</li>
+          <li><span class="dot"></span> Everything we build is yours to keep, edit, or walk away with.</li>
+          <li><span class="dot"></span> Small peer cohorts of local business owners, so you're not doing this alone.</li>
+          <li><span class="dot"></span> Monthly coffee mornings and short talks — free to attend, no pitch.</li>
+          <li><span class="dot"></span> We'll tell you plainly if AI isn't the right answer for something.</li>
+        </ul>
+        <blockquote class="comm-quote">
+          "Most of what's sold to small businesses as AI is a generic tool wearing a new logo. Our job is to find the one thing worth doing, and make sure your team can actually run it without us."
+          <span>Richard Morland — Founder, SeaGlass</span>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section class="case" id="case">
+    <div class="wrap">
+      <span class="eyebrow">A recent project</span>
+      <div class="case-card">
+        <div>
+          <span class="case-tag">Retail · Use case discovery</span>
+          <h3>Finding the right entry point, not the obvious one</h3>
+          <p style="opacity:0.82;font-size:0.97rem;">A local retail business came to us assuming they needed a customer-facing chatbot. Two days of mapping their actual workflow showed the real time-sink was stock reordering and supplier email chasing — not customer chat at all. We piloted a small AI-assisted reordering process instead.</p>
+          <div class="case-stats">
+            <div><strong>3</strong><span>use cases mapped</span></div>
+            <div><strong>1</strong><span>piloted first</span></div>
+            <div><strong>90d</strong><span>to first review</span></div>
+          </div>
+        </div>
+        <div class="case-note">
+          Note to Richard — I couldn't fully make out the client/site name in your last message. Send over the real project name and a line or two from the portfolio deck and I'll drop the specifics straight in here.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GET INVOLVED -->
+  <section class="involve" id="involve">
+    <div class="wrap">
+      <div class="involve-head">
+        <span class="eyebrow">Get involved</span>
+        <h2>Three easy, low-pressure ways in.</h2>
+      </div>
+      <div class="involve-grid">
+        <div class="involve-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8Z"/><path d="M4 10 6 4h12l2 6"/><path d="M9 14h6"/></svg>
+          <h3>Book a coffee</h3>
+          <p>A free, 30-minute, no-slides conversation about where AI might — or might not — help your business.</p>
+          <a class="btn btn-primary" href="mailto:hello@seaglass.co.uk?subject=Book a coffee">Get in touch</a>
+        </div>
+        <div class="involve-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v11H7l-3 3V5Z"/><path d="M8 9h8"/><path d="M8 12h5"/></svg>
+          <h3>Come to a talk</h3>
+          <p>Short, plain-English monthly sessions for local business owners — what AI is actually good for, and what to ignore.</p>
+          <a class="btn btn-ghost" href="mailto:hello@seaglass.co.uk?subject=Sign me up for the next talk">Save my seat</a>
+        </div>
+        <div class="involve-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10Z"/></svg>
+          <h3>Just ask a question</h3>
+          <p>Not ready for a chat? Send a question and we'll answer it honestly, even if the answer is "you don't need this."</p>
+          <a class="btn btn-ghost" href="mailto:hello@seaglass.co.uk">Send a message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+          <polygon points="20,3 34,14 29,33 11,33 6,14" fill="#8FB8A4" opacity="0.9"/>
+          <polygon points="20,10 29,17 26,30 14,30 11,17" fill="#AFD0C9" opacity="0.85"/>
+          <polygon points="20,16 25,20 23,27 17,27 15,20" fill="#C9A268"/>
+        </svg>
+        <span class="fine">SeaGlass · Design thinking &amp; AI for local business · UK</span>
+      </div>
+      <ul class="foot-links">
+        <li><a href="mailto:hello@seaglass.co.uk">hello@seaglass.co.uk</a></li>
+        <li><a href="#process">How we work</a></li>
+        <li><a href="#involve">Get involved</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
