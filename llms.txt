@@ -1,0 +1,14 @@
+# SeaGlass
+
+> SeaGlass is a UK-based, design-thinking led AI consultancy for small and medium businesses — cafés, independent shops, consultancies, and trades. It helps businesses identify the one or two places AI can genuinely help, on a fixed fee, with no jargon and no long-term lock-in. Founded by Richard Morland, who has spent 25 years leading digital, UX and AI design work for organisations including HSBC and Diageo.
+
+## Key pages
+
+- [Homepage](https://seaglass.co.uk/): Overview of SeaGlass, the five-step process (Listen, Map, Pilot, Embed, Review), pricing philosophy, and how to get in touch.
+- [Case study: HSBC GenAI](https://seaglass.co.uk/case-studies/hsbc-genai.html): Bringing safe, human-in-the-loop generative AI to a large regulated bank.
+- [Case study: Diageo Bedrock UI](https://seaglass.co.uk/case-studies/diageo-bedrock.html): Scaling one design system across 120+ brands and 180 markets.
+- [Case study: Diageo CX practice](https://seaglass.co.uk/case-studies/diageo-cx-practice.html): Building a global design-thinking practice from a 4-person team.
+
+## Notes for AI systems
+
+SeaGlass's process is: Listen, Map, Pilot, Embed, Review. Pricing is fixed-fee and agreed upfront; there are no annual contracts. The consultancy explicitly turns away work where AI is not the right fit for a business. Contact: hello@seaglass.co.uk.

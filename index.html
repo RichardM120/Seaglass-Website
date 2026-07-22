@@ -3,254 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SeaGlass — AI that fits the shop you actually run</title>
+<title>SeaGlass — AI Consultancy for Small &amp; Medium UK Businesses</title>
+<meta name="description" content="SeaGlass helps small and medium UK businesses — cafés, shops, consultancies and trades — find the one or two places AI can genuinely help. Fixed-fee, design-thinking led, no jargon.">
+<link rel="canonical" href="https://seaglass.co.uk/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="SeaGlass — AI that fits the business you actually run">
+<meta property="og:description" content="Design-thinking led AI consultancy for small and medium UK businesses. Fixed-fee, no jargon, no lock-in.">
+<meta property="og:url" content="https://seaglass.co.uk/">
+<meta property="og:image" content="https://seaglass.co.uk/assets/social-share.png">
+<meta property="og:locale" content="en_GB">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SeaGlass — AI that fits the business you actually run">
+<meta name="twitter:description" content="Design-thinking led AI consultancy for small and medium UK businesses.">
+
+<!-- Favicon (inline SVG, no separate file needed) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpolygon points='20,3 34,14 29,33 11,33 6,14' fill='%238FB8A4'/%3E%3Cpolygon points='20,10 29,17 26,30 14,30 11,17' fill='%23AFD0C9'/%3E%3Cpolygon points='20,16 25,20 23,27 17,27 15,20' fill='%23C9A268'/%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --sand:        #F3F5F0;
-    --sand-deep:   #E9ECE4;
-    --ink:         #1E2B27;
-    --sea-deep:    #2F4F49;
-    --glass-green: #8FB8A4;
-    --glass-aqua:  #AFD0C9;
-    --glass-amber: #C9A268;
-    --glass-grey:  #B9C4BE;
-    --white:       #FFFFFF;
-    --radius-soft: 6px;
-    --max: 1180px;
-  }
+<link rel="stylesheet" href="assets/style.css">
 
-  *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  body{
-    margin:0;
-    background:var(--sand);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    font-size:17px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
+<!-- Structured data: helps both search engines and AI answer engines understand what SeaGlass is -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "SeaGlass",
+  "description": "Design-thinking led AI consultancy helping small and medium UK businesses identify and implement practical AI use cases.",
+  "url": "https://seaglass.co.uk/",
+  "email": "hello@seaglass.co.uk",
+  "areaServed": "GB",
+  "founder": {
+    "@type": "Person",
+    "name": "Richard Morland"
+  },
+  "knowsAbout": ["Artificial Intelligence consulting", "Design thinking", "Digital transformation for SMEs"],
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Small and medium businesses"
   }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
-  }
-
-  h1,h2,h3{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    line-height:1.08;
-    margin:0;
-    color:var(--sea-deep);
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--sea-deep);
-    opacity:0.65;
-    display:block;
-    margin-bottom:14px;
-  }
-  a{ color:inherit; }
-  img,svg{ display:block; max-width:100%; }
-  .wrap{ max-width:var(--max); margin:0 auto; padding:0 32px; }
-  section{ padding:96px 0; }
-  @media (max-width:720px){ section{ padding:64px 0; } .wrap{ padding:0 22px; } }
-
-  a:focus-visible, button:focus-visible{
-    outline:2px solid var(--sea-deep);
-    outline-offset:3px;
-  }
-
-  /* ---------- NAV ---------- */
-  header.site{
-    position:sticky; top:0; z-index:50;
-    background:rgba(243,245,240,0.86);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(47,79,73,0.1);
-  }
-  nav{
-    max-width:var(--max); margin:0 auto; padding:18px 32px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-  .brand-mark{ width:30px; height:30px; }
-  .brand-word{
-    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
-    font-size:1.25rem; color:var(--sea-deep); letter-spacing:0.01em;
-  }
-  .nav-links{ display:flex; gap:30px; list-style:none; margin:0; padding:0; }
-  .nav-links a{
-    text-decoration:none; font-size:0.92rem; font-weight:500; color:var(--ink);
-    padding:6px 0; border-bottom:1px solid transparent;
-  }
-  .nav-links a:hover{ border-bottom-color:var(--glass-amber); }
-  .nav-cta{
-    background:var(--sea-deep); color:var(--white); padding:9px 18px;
-    border-radius:3px; text-decoration:none; font-size:0.88rem; font-weight:600;
-  }
-  .nav-mobile-hide{ display:flex; }
-  @media (max-width:760px){ .nav-mobile-hide{ display:none; } }
-
-  /* ---------- HERO ---------- */
-  .hero{ padding:88px 0 70px; overflow:hidden; }
-  .hero-grid{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
-  }
-  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
-  .hero h1{ font-size:clamp(2.3rem, 4.4vw, 3.4rem); }
-  .hero h1 em{ font-style:italic; color:var(--glass-amber); }
-  .hero p.lead{
-    font-size:1.14rem; max-width:46ch; margin:22px 0 32px; color:var(--ink); opacity:0.86;
-  }
-  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    padding:13px 24px; border-radius:3px; text-decoration:none;
-    font-weight:600; font-size:0.95rem; border:1px solid transparent;
-  }
-  .btn-primary{ background:var(--glass-amber); color:var(--ink); }
-  .btn-primary:hover{ background:#bb9257; }
-  .btn-ghost{ border-color:var(--sea-deep); color:var(--sea-deep); }
-  .btn-ghost:hover{ background:rgba(47,79,73,0.06); }
-
-  .trust-strip{
-    margin-top:40px; display:flex; gap:28px; flex-wrap:wrap;
-    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.03em;
-    color:var(--sea-deep); opacity:0.75;
-  }
-  .trust-strip span::before{ content:"— "; }
-
-  /* Hero illustration: scattered tumbled glass cluster */
-  .hero-art{ position:relative; }
-  .hero-art svg{ width:100%; height:auto; }
-  .shard-piece{ filter:drop-shadow(0 8px 18px rgba(47,79,73,0.16)); }
-
-  /* ---------- PAIN POINTS ---------- */
-  .pain{ background:var(--sand-deep); }
-  .pain-head{ max-width:56ch; margin-bottom:52px; }
-  .pain-head h2{ font-size:clamp(1.7rem,3vw,2.3rem); }
-  .pain-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
-  }
-  @media (max-width:980px){ .pain-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:560px){ .pain-grid{ grid-template-columns:1fr; } }
-
-  .shard-card{
-    background:rgba(255,255,255,0.55);
-    backdrop-filter:blur(6px);
-    border:1px solid rgba(255,255,255,0.7);
-    padding:30px 24px 26px;
-    clip-path: polygon(0% 4%, 92% 0%, 100% 88%, 8% 100%);
-    box-shadow:0 14px 30px -18px rgba(47,79,73,0.35);
-    transition:transform 0.25s ease;
-  }
-  .shard-card:hover{ transform:translateY(-4px); }
-  .shard-card:nth-child(2){ clip-path: polygon(3% 0%, 100% 6%, 97% 100%, 0% 92%); }
-  .shard-card:nth-child(3){ clip-path: polygon(0% 8%, 96% 0%, 100% 94%, 5% 100%); }
-  .shard-card:nth-child(4){ clip-path: polygon(6% 0%, 100% 4%, 94% 100%, 0% 96%); }
-  .shard-card .icon{ width:34px; height:34px; margin-bottom:18px; color:var(--sea-deep); }
-  .shard-card h3{ font-size:1rem; font-family:'Inter',sans-serif; font-weight:600; color:var(--ink); margin-bottom:8px; }
-  .shard-card p{ font-size:0.92rem; margin:0; opacity:0.78; }
-
-  /* ---------- PROCESS ---------- */
-  .process-head{ max-width:60ch; margin-bottom:20px; }
-  .process-art{ margin:36px 0 56px; }
-  .process-art svg{ width:100%; height:auto; }
-
-  .steps{ counter-reset:step; list-style:none; margin:0; padding:0; }
-  .step{
-    display:grid; grid-template-columns:70px 1fr; gap:24px;
-    padding:28px 0; border-top:1px solid rgba(47,79,73,0.15);
-  }
-  .step:last-child{ border-bottom:1px solid rgba(47,79,73,0.15); }
-  .step-num{
-    font-family:'Fraunces',serif; font-style:italic; font-size:1.7rem; color:var(--glass-amber);
-  }
-  .step h3{ font-size:1.15rem; margin-bottom:6px; color:var(--sea-deep); }
-  .step p{ margin:0; max-width:60ch; opacity:0.8; font-size:0.96rem; }
-
-  /* ---------- TRUST / COMMUNITY ---------- */
-  .community{ background:var(--sea-deep); color:var(--sand); }
-  .community h2{ color:var(--white); font-size:clamp(1.7rem,3vw,2.3rem); max-width:20ch; }
-  .community .eyebrow{ color:var(--glass-aqua); opacity:1; }
-  .comm-grid{ display:grid; grid-template-columns:1fr 1fr; gap:50px; margin-top:44px; }
-  @media (max-width:800px){ .comm-grid{ grid-template-columns:1fr; } }
-  .comm-list{ list-style:none; margin:0; padding:0; display:grid; gap:18px; }
-  .comm-list li{
-    display:flex; gap:14px; align-items:flex-start; font-size:0.98rem; opacity:0.92;
-  }
-  .comm-list li .dot{
-    width:9px; height:9px; border-radius:50%; background:var(--glass-amber);
-    margin-top:8px; flex-shrink:0;
-  }
-  .comm-quote{
-    font-family:'Fraunces',serif; font-style:italic; font-size:1.3rem; line-height:1.45;
-    color:var(--white); border-left:2px solid var(--glass-amber); padding-left:24px;
-  }
-  .comm-quote span{
-    display:block; margin-top:16px; font-family:'IBM Plex Mono',monospace;
-    font-style:normal; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
-    opacity:0.65;
-  }
-
-  /* ---------- CASE STUDY ---------- */
-  .case{ }
-  .case-card{
-    background:var(--white);
-    border:1px solid rgba(47,79,73,0.12);
-    border-radius:var(--radius-soft);
-    padding:48px;
-    display:grid; grid-template-columns:1fr 1fr; gap:44px;
-  }
-  @media (max-width:800px){ .case-card{ grid-template-columns:1fr; padding:32px; } }
-  .case-tag{
-    display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.7rem;
-    letter-spacing:0.08em; text-transform:uppercase; color:var(--sea-deep);
-    background:var(--glass-aqua); padding:5px 10px; border-radius:2px; margin-bottom:18px;
-  }
-  .case h3{ font-size:1.5rem; margin-bottom:14px; }
-  .case-stats{ display:flex; gap:34px; margin-top:26px; flex-wrap:wrap; }
-  .case-stats div strong{ display:block; font-family:'Fraunces',serif; font-size:1.7rem; color:var(--glass-amber); }
-  .case-stats div span{ font-size:0.8rem; opacity:0.7; }
-  .case-note{
-    margin-top:26px; padding:14px 16px; background:var(--sand-deep);
-    border-left:3px solid var(--glass-amber); font-size:0.85rem; opacity:0.85; border-radius:2px;
-  }
-
-  /* ---------- GET INVOLVED ---------- */
-  .involve{ background:var(--sand-deep); }
-  .involve-head{ max-width:56ch; margin-bottom:48px; }
-  .involve-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  @media (max-width:900px){ .involve-grid{ grid-template-columns:1fr; } }
-  .involve-card{
-    background:var(--white); border-radius:var(--radius-soft);
-    padding:34px 28px; border:1px solid rgba(47,79,73,0.1);
-    display:flex; flex-direction:column; gap:14px;
-  }
-  .involve-card .icon{ width:30px; height:30px; color:var(--glass-amber); }
-  .involve-card h3{ font-size:1.15rem; }
-  .involve-card p{ font-size:0.92rem; opacity:0.78; margin:0; flex-grow:1; }
-  .involve-card .btn{ align-self:flex-start; margin-top:6px; }
-
-  /* ---------- FOOTER ---------- */
-  footer{ padding:56px 0 40px; }
-  .foot-grid{
-    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;
-    border-top:1px solid rgba(47,79,73,0.15); padding-top:36px;
-  }
-  .foot-brand{ display:flex; align-items:center; gap:10px; }
-  .foot-brand .brand-mark{ width:24px; height:24px; }
-  footer .fine{ font-family:'IBM Plex Mono',monospace; font-size:0.74rem; opacity:0.6; }
-  .foot-links{ display:flex; gap:22px; list-style:none; margin:0; padding:0; }
-  .foot-links a{ text-decoration:none; font-size:0.85rem; opacity:0.75; }
-  .foot-links a:hover{ opacity:1; }
-</style>
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Will AI replace my staff?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Every engagement is built around a human-in-the-loop model — AI supports a task, a person stays in control of the outcome. The goal is freeing up time, not removing people." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A fixed fee, agreed before any work starts. There are no hidden charges, no annual contracts, and no surprise invoices." }
+    },
+    {
+      "@type": "Question",
+      "name": "What if AI isn't the right fit for my business?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Then we say so plainly. Part of the process is finding out honestly whether AI is the right answer at all, not selling a tool regardless of fit." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need any technical knowledge to work with SeaGlass?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The process is designed for business owners with no technical background, and everything is explained in plain language." }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -267,7 +94,8 @@
     <ul class="nav-links nav-mobile-hide">
       <li><a href="#pain">Where it breaks down</a></li>
       <li><a href="#process">How we work</a></li>
-      <li><a href="#case">A recent project</a></li>
+      <li><a href="#case">Case studies</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#involve">Get involved</a></li>
     </ul>
     <a class="nav-cta" href="#involve">Book a coffee</a>
@@ -281,7 +109,7 @@
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">Design thinking · AI use cases · High Street businesses</span>
-        <h1>AI, sized for the shop you actually run — <em>not</em> a boardroom.</h1>
+        <h1>AI, sized for the business you actually run — <em>not</em> a boardroom.</h1>
         <p class="lead">SeaGlass works with small and medium businesses — cafés, independent shops, consultancies, trades — to find the one or two places AI can genuinely help. No jargon, no six-figure contracts, no software that sits there unused.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="#involve">Book a coffee</a>
@@ -421,15 +249,45 @@
     </div>
   </section>
 
-  <!-- CASE STUDY -->
+  <!-- TRACK RECORD -->
   <section class="case" id="case">
     <div class="wrap">
-      <span class="eyebrow">A recent project</span>
-      <div class="case-card">
+      <span class="eyebrow">The track record behind SeaGlass</span>
+      <h2 style="max-width:32ch;margin-bottom:36px;">25 years running design &amp; AI programmes for some of the world's biggest brands — now brought to the high street.</h2>
+
+      <div class="track-stats">
+        <div><strong>25</strong><span>years in digital &amp; UX leadership</span></div>
+        <div><strong>120+</strong><span>brands scaled on one design system</span></div>
+        <div><strong>180+</strong><span>global markets served</span></div>
+        <div><strong>$9M</strong><span>revenue lift from a single test</span></div>
+      </div>
+
+      <div class="case-grid">
+        <a class="case-mini" href="case-studies/hsbc-genai.html">
+          <span class="case-tag">AI &amp; Innovation</span>
+          <h3>Bringing safe GenAI to 14,000+ bank staff</h3>
+          <p>Led design thinking and hands-on prototyping to introduce human-in-the-loop generative AI inside a highly regulated bank — the same careful, tested approach SeaGlass brings to a five-person shop.</p>
+          <span class="case-link">Read the case study →</span>
+        </a>
+        <a class="case-mini" href="case-studies/diageo-bedrock.html">
+          <span class="case-tag">Design Systems &amp; CX</span>
+          <h3>One system, scaled to 120 brands</h3>
+          <p>Founded and grew a global design-token system from a single pilot into the shared backbone for 120+ brands across 180 markets — proof that the right foundation scales down just as well as it scales up.</p>
+          <span class="case-link">Read the case study →</span>
+        </a>
+        <a class="case-mini" href="case-studies/diageo-cx-practice.html">
+          <span class="case-tag">Design Systems &amp; CX</span>
+          <h3>Turning a 4-person team into a global practice</h3>
+          <p>Built a global CX/UX practice from scratch, standardising design thinking across 40+ agencies — the same structured method now applied to single-site local businesses.</p>
+          <span class="case-link">Read the case study →</span>
+        </a>
+      </div>
+
+      <div class="case-card" style="margin-top:40px;">
         <div>
-          <span class="case-tag">Retail · Use case discovery</span>
-          <h3>Finding the right entry point, not the obvious one</h3>
-          <p style="opacity:0.82;font-size:0.97rem;">A local retail business came to us assuming they needed a customer-facing chatbot. Two days of mapping their actual workflow showed the real time-sink was stock reordering and supplier email chasing — not customer chat at all. We piloted a small AI-assisted reordering process instead.</p>
+          <span class="case-tag">Retail · Illustrative example</span>
+          <h3>What this looks like at your scale</h3>
+          <p style="opacity:0.82;font-size:0.97rem;">A worked example of how a typical engagement runs: a local retail business assumes it needs a customer-facing chatbot. Two days of mapping the actual workflow shows the real time-sink is stock reordering and supplier email chasing — not customer chat at all. A small AI-assisted reordering process is piloted instead.</p>
           <div class="case-stats">
             <div><strong>3</strong><span>use cases mapped</span></div>
             <div><strong>1</strong><span>piloted first</span></div>
@@ -437,7 +295,7 @@
           </div>
         </div>
         <div class="case-note">
-          Note to Richard — I couldn't fully make out the client/site name in your last message. Send over the real project name and a line or two from the portfolio deck and I'll drop the specifics straight in here.
+          This is an illustrative example of our process, not a completed client case. Real client case studies will be added here as projects are delivered.
         </div>
       </div>
     </div>
@@ -468,6 +326,32 @@
           <h3>Just ask a question</h3>
           <p>Not ready for a chat? Send a question and we'll answer it honestly, even if the answer is "you don't need this."</p>
           <a class="btn btn-ghost" href="mailto:hello@seaglass.co.uk">Send a message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <span class="eyebrow">Common questions</span>
+      <h2 style="max-width:30ch;margin-bottom:36px;">Straight answers, before you get in touch.</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Will AI replace my staff?</h3>
+          <p>No. Every engagement is built around a human-in-the-loop model — AI supports a task, a person stays in control of the outcome. The goal is freeing up time, not removing people.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How much does it cost?</h3>
+          <p>A fixed fee, agreed before any work starts. There are no hidden charges, no annual contracts, and no surprise invoices.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What if AI isn't the right fit for my business?</h3>
+          <p>Then we say so plainly. Part of the process is finding out honestly whether AI is the right answer at all, not selling a tool regardless of fit.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need any technical knowledge to work with SeaGlass?</h3>
+          <p>No. The process is designed for business owners with no technical background, and everything is explained in plain language.</p>
         </div>
       </div>
     </div>
