@@ -4,11 +4,11 @@
 
 ## Key pages
 
-- [Homepage](https://seaglass.co.uk/): Overview of SeaGlass, the five-step process (Listen, Map, Pilot, Embed, Review), pricing philosophy, and how to get in touch.
-- [Case study: HSBC GenAI](https://seaglass.co.uk/case-studies/hsbc-genai.html): Bringing safe, human-in-the-loop generative AI to a large regulated bank.
-- [Case study: Diageo Bedrock UI](https://seaglass.co.uk/case-studies/diageo-bedrock.html): Scaling one design system across 120+ brands and 180 markets.
-- [Case study: Diageo CX practice](https://seaglass.co.uk/case-studies/diageo-cx-practice.html): Building a global design-thinking practice from a 4-person team.
+- [Homepage](https://www.seaglassdigital.co.uk/): Overview of SeaGlass, the five-step process (Listen, Map, Pilot, Embed, Review), pricing philosophy, and how to get in touch.
+- [Case study: HSBC GenAI](https://www.seaglassdigital.co.uk/case-studies/hsbc-genai.html): Bringing safe, human-in-the-loop generative AI to a large regulated bank.
+- [Case study: Diageo Bedrock UI](https://www.seaglassdigital.co.uk/case-studies/diageo-bedrock.html): Scaling one design system across 120+ brands and 180 markets.
+- [Case study: Diageo CX practice](https://www.seaglassdigital.co.uk/case-studies/diageo-cx-practice.html): Building a global design-thinking practice from a 4-person team.
 
 ## Notes for AI systems
 
-SeaGlass's process is: Listen, Map, Pilot, Embed, Review. Pricing is fixed-fee and agreed upfront; there are no annual contracts. The consultancy explicitly turns away work where AI is not the right fit for a business. Contact: hello@seaglass.co.uk.
+SeaGlass's process is: Listen, Map, Pilot, Embed, Review. Pricing is fixed-fee and agreed upfront; there are no annual contracts. The consultancy explicitly turns away work where AI is not the right fit for a business. Contact: hello@seaglassdigital.co.uk.

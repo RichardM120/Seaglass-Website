@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://seaglass.co.uk/</loc>
+    <loc>https://www.seaglassdigital.co.uk/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://seaglass.co.uk/case-studies/hsbc-genai.html</loc>
+    <loc>https://www.seaglassdigital.co.uk/case-studies/hsbc-genai.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://seaglass.co.uk/case-studies/diageo-bedrock.html</loc>
+    <loc>https://www.seaglassdigital.co.uk/case-studies/diageo-bedrock.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://seaglass.co.uk/case-studies/diageo-cx-practice.html</loc>
+    <loc>https://www.seaglassdigital.co.uk/case-studies/diageo-cx-practice.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>

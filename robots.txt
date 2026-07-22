@@ -28,4 +28,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://seaglass.co.uk/sitemap.xml
+Sitemap: https://www.seaglassdigital.co.uk/sitemap.xml
