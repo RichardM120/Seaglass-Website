@@ -54,7 +54,40 @@
   img,svg{ display:block; max-width:100%; }
   .wrap{ max-width:var(--max); margin:0 auto; padding:0 32px; }
   section{ padding:96px 0; }
-  @media (max-width:720px){ section{ padding:64px 0; } .wrap{ padding:0 22px; } }
+  @media (max-width:720px){
+    section{ padding:40px 0; }
+    .wrap{ padding:0 20px; }
+    body{ padding-bottom:68px; } /* room for the sticky mobile CTA bar */
+    .hero{ padding:48px 0 36px; }
+    .pain-head{ margin-bottom:32px; }
+    .involve-head{ margin-bottom:28px; }
+    .flow-diagram-5{ margin-bottom:32px; }
+    .how-intro{ margin:12px 0 24px; }
+    .why-in-pain{ margin-top:28px; }
+    .pull-quote{ margin-top:20px; }
+    .reassure{ padding:26px 0; }
+    .hero-grid{ gap:32px; }
+    .hero p.lead{ margin:16px 0 22px; }
+    .trust-strip{ margin-top:24px; gap:16px; }
+  }
+
+  /* ---------- STICKY MOBILE CTA ---------- */
+  .mobile-cta-bar{
+    display:none;
+  }
+  @media (max-width:760px){
+    .mobile-cta-bar{
+      display:flex; position:fixed; left:0; right:0; bottom:0; z-index:45;
+      background:rgba(243,245,240,0.94);
+      backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+      border-top:1px solid rgba(47,79,73,0.15);
+      padding:12px 20px;
+      box-shadow:0 -8px 20px -12px rgba(47,79,73,0.25);
+    }
+    .mobile-cta-bar .btn{
+      width:100%; justify-content:center; padding:14px 20px; font-size:1rem;
+    }
+  }
 
   a:focus-visible, button:focus-visible{
     outline:2px solid var(--sea-deep);
@@ -170,6 +203,27 @@
   .hero-art{ position:relative; }
   .hero-art svg{ width:100%; height:auto; }
   .shard-piece{ filter:drop-shadow(0 8px 18px rgba(47,79,73,0.16)); }
+
+  /* ---------- NEW TO AI REASSURANCE PANEL ---------- */
+  .reassure{
+    padding:36px 0;
+    background:var(--glass-aqua);
+  }
+  .reassure-inner{
+    display:flex; align-items:flex-start; gap:24px;
+  }
+  .reassure-icon{
+    width:36px; height:36px; flex-shrink:0; margin-top:4px; color:var(--sea-deep);
+  }
+  .reassure h2{
+    font-size:1.25rem; margin-bottom:8px; color:var(--sea-deep);
+  }
+  .reassure p{
+    margin:0; font-size:0.98rem; opacity:0.88; max-width:70ch; color:var(--ink);
+  }
+  @media (max-width:600px){
+    .reassure-inner{ flex-direction:column; gap:14px; }
+  }
 
   /* ---------- PAIN POINTS ---------- */
   .pain{ background:var(--sand-deep); }
