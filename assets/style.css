@@ -167,7 +167,7 @@
     .nav-toggle-btn[aria-expanded="true"] .bar:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
     .brand-mark{ width:36px; height:36px; }
     .brand-word{ font-size:1.5rem; }
-    .nav-cta{ padding:10px 14px; font-size:0.82rem; }
+    .nav-cta{ display:none; }
   }
 
   /* ---------- HERO ---------- */
